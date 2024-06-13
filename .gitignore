@@ -5,4 +5,4 @@
 !*.h
 !*.c
 !.gitignore
-!uts.yml
+!*.yml
