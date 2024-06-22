@@ -21,9 +21,13 @@ target_include_directories(serializer INTERFACE ${CMAKE_CURRENT_LIST_DIR}/includ
 
 add_library(engine INTERFACE)
 target_include_directories(engine INTERFACE ${CMAKE_CURRENT_LIST_DIR}/include)
+
+add_library(task_engine INTERFACE)
+target_include_directories(task_engine INTERFACE ${CMAKE_CURRENT_LIST_DIR}/include)
 target_link_libraries(
-    engine
+    task_engine
     INTERFACE
+    engine
     creator
     task
     parser

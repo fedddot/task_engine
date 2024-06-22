@@ -7,7 +7,7 @@ add_executable(
 target_link_libraries(
 	engine_tests
 	PRIVATE
-	engine
+	task_engine
 	functional_creator
 	functional_parser
 	functional_serializer

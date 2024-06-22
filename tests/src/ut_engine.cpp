@@ -10,7 +10,7 @@
 #include "integer.hpp"
 #include "object.hpp"
 
-#include "engine.hpp"
+#include "task_engine.hpp"
 
 #include "functional_creator.hpp"
 #include "functional_parser.hpp"
@@ -24,7 +24,7 @@ using namespace engine_utl;
 using TestRawData = std::string;
 using TestReport = int;
 
-using EngineTask = typename Engine<TestRawData, TestReport>::EngineTask;
+using EngineTask = typename TaskEngine<TestRawData, TestReport>::EngineTask;
 
 TEST(ut_engine, ctor_dtor_sanity) {
 	// GIVEN
@@ -57,11 +57,11 @@ TEST(ut_engine, ctor_dtor_sanity) {
 	);
 
 	// WHEN
-	Engine<TestRawData, TestReport> *instance_ptr(nullptr);
+	TaskEngine<TestRawData, TestReport> *instance_ptr(nullptr);
 
 	// THEN
 	ASSERT_NO_THROW(
-		(instance_ptr = new Engine<TestRawData, TestReport>(task_creator, fail_report_creator, parser, serializer))
+		(instance_ptr = new TaskEngine<TestRawData, TestReport>(task_creator, fail_report_creator, parser, serializer))
 	);
 	ASSERT_NE(nullptr, instance_ptr);
 	ASSERT_NO_THROW(delete instance_ptr);
@@ -120,7 +120,7 @@ TEST(ut_engine, run_task_sanity_negative) {
 	};
 
 	// WHEN
-	Engine<TestRawData, TestReport> instance(task_creator, fail_report_creator, parser, serializer);
+	TaskEngine<TestRawData, TestReport> instance(task_creator, fail_report_creator, parser, serializer);
 
 	for (auto test_case: test_cases) {
 		// WHEN
